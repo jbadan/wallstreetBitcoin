@@ -16,6 +16,13 @@ class App extends Component {
     }
   }
 
+  componentDidMount(){
+    axios.get('/news', {
+
+    }).then(result => {
+      console.log(result);
+    })
+  }
 
   render() {
       return (
