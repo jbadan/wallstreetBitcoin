@@ -7,7 +7,15 @@ Switch
 } from 'react-router-dom'
 import './App.css';
 import axios from 'axios';
+import { Grid, Row, Col } from 'react-flexbox-grid';
 import {List, ListItem} from 'material-ui/List';
+import Paper from 'material-ui/Paper';
+import Articles from './Articles';
+
+const style = {
+  width: "50%",
+  margin: 20,
+};
 
 
 class App extends Component {
@@ -31,42 +39,13 @@ class App extends Component {
 
   render() {
       return (
-        <div>
-        hi!
-        <List>
-        {this.state.articles.map((article, index) => {
-          return(
-            <div key={index}>
-              <ListItem
-                  key={index}
-                  value={article}
-                  primaryText={article.title}
-                  primaryTogglesNestedList={true}
-                  initiallyOpen={true}
-                  nestedItems={[
-                        <ListItem
-                          key={1}
-                          primaryText={article.author}
-                        />,
-                      <ListItem
-                        key={2}
-                        primaryText={article.description}
-                      />,
-                      <ListItem
-                        key={3}
-                        primaryText={article.source.name}
-                      />,
-                      <ListItem
-                        key={4}
-                        primaryText={article.url}
-                      />,
-                    ]}
-
-              />
-            </div>
-          )})}
-        </List>
-      </div>
+        <Grid fluid>
+          <Row>
+            <Col xs>
+              <Articles />
+            </Col>
+          </Row>
+      </Grid>
       );
     }
 }

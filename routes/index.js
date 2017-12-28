@@ -22,7 +22,8 @@ const BAD_SOURCE = 'sourceDoesNotExist';
 router.get('/news', function(req, res) {
     var bitcoin = "bitcoin";
     request({
-      url: NEWS_API_BASE_URL
+      url: NEWS_API_BASE_URL,
+      language: "en"
     }, function(error, response, body) {
         var result = JSON.parse(body);
         res.send(result);
