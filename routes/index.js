@@ -14,7 +14,7 @@ if (!URL_SHORTENER_API_KEY) {
     'URL_SHORTENER_API_KEY in your environment variables.')
 }
 
-const NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything';
+const NEWS_API_BASE_URL = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey=7536c6156c1e4f5190c1ceb578db8599';
 const URL_SHORTENER_BASE_URL = 'https://www.googleapis.com/urlshortener/v1/url';
 const BAD_SOURCE = 'sourceDoesNotExist';
 
@@ -22,13 +22,10 @@ const BAD_SOURCE = 'sourceDoesNotExist';
 router.get('/news', function(req, res) {
     var bitcoin = "bitcoin";
     request({
-      url: NEWS_API_BASE_URL,
-      q: bitcoin,
-      apiKey: NEWS_API_KEY
+      url: NEWS_API_BASE_URL
     }, function(error, response, body) {
-        var result = JSON.parse(body).results;
-        console.log(result);
-        res.send(response);
+        var result = JSON.parse(body);
+        res.send(result);
     });
 });
 
